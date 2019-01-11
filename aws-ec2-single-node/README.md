@@ -1,7 +1,7 @@
 CouchDB Provision for EC2 Single Node
 =========
 
-This provision will let you start an EC2 instance and configure it with CouchDB.
+This provision will let you start an EC2 instance and configure it with CouchDB and SSL over Amazon Web Services.
 
 Before Start
 ------------
@@ -33,4 +33,7 @@ sudo rm -f couchdb_2.3.0-bitnami-ubuntu_18.04.sh
 
 3. If you require, you can create a domain name, something like db.yourapp.com
 4. Request a public certificate with AWS Certificate Manager for your domain e.g. db.yourapp.com
-5. 
+5. Create an application-load-balancer with just one listener for HTTPS and Port 6984 which is going to use the previous certificate requested and the public security group "public-couchdb-server".
+  5.1. Create a target-group with a protocol HTTP Port 5984; in "Advanced health check settings" change the success code to 401 (Because your couchdb will require authorization to access).
+  5.1. Register the EC2 Instance launched before.
+6. Point your domain db.yourapp.com to the application-load-balancer.
