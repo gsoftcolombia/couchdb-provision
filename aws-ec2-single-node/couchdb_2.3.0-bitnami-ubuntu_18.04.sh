@@ -5,9 +5,9 @@
 #date				:2019-01-10
 #==============================================================================
 
-# vars
-couchdb_pswd="YOUR_ADMIN_COUCHDB_PASSWORD"
-
+install() {
+# params
+couchdb_pswd=$1
 # Installing required packages so as to configure 'locales' 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -36,10 +36,13 @@ origins = *
 headers = accept, authorization, content-type, origin, referer, x-csfr-token
 methods = GET, PUT, POST, HEAD, DELETE
 EOF
+
 sudo /opt/couchdb-2.3.0-0/ctlscript.sh restart
 
-# Single node configuration
+# Just to be sure that the server is configured as a single node!
 curl -X PUT http://admin:$couchdb_pswd@127.0.0.1:5984/_users
 curl -X PUT http://admin:$couchdb_pswd@127.0.0.1:5984/_replicator
 curl -X PUT http://admin:$couchdb_pswd@127.0.0.1:5984/_global_changes
+}
 
+"$@"
