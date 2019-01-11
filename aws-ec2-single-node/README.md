@@ -1,7 +1,7 @@
 CouchDB Provision for EC2 Single Node
 =========
 
-This provision will let you start an EC2 instance and configure it with CouchDB and SSL over Amazon Web Services.
+This provision will let you start an EC2 instance and configure it with CouchDB and SSL over Amazon Web Services. This installation will also enable CORS for production usage.
 
 Before Start
 ------------

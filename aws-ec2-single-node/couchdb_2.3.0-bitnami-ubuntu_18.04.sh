@@ -26,6 +26,9 @@ sudo ./bitnami-couchdb-2.3.0-0-linux-x64-installer.run --mode unattended --couch
 
 # Configuring Couchdb for receive request from anywhere
 sudo bash -c  "cat > /opt/couchdb-2.3.0-0/couchdb/etc/local.d/couchdb_config.ini" << EOF
+[httpd]
+enable_cors = true
+
 [chttpd]
 bind_address = 0.0.0.0
 require_valid_user = true
