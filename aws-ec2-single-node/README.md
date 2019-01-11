@@ -45,8 +45,7 @@ sudo rm -f couchdb_2.3.0-bitnami-ubuntu_18.04.sh
 
 **Important**
 
-a. Remember, your couchdb password will still available in the instance user-data, you're able to clean it up.
-b. Relax!
+* Remember, your couchdb password will still available in the instance user-data, you're able to clean it up.
 
 
 
